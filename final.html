@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Breaking Point - Cargando</title>
+    <style>
+        /* Paleta de Colores (Militar/Táctico):
+           - Fondo principal: #1c1c1c (Gris Carbón Oscuro)
+           - Texto principal: #d0d0d0 (Gris Claro Suave)
+           - Acento de estilo: #556b2f (Verde Oliva Oscuro)
+           - Selección/Brillo: #7c9a51 (Verde Oliva Claro)
+           - Títulos: #f0f0f0 (Blanco Casi Puro)
+        */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1c1c1c; 
+            color: #d0d0d0; 
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow: hidden; 
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* Necesario para posicionar el video de fondo */
+        }
+
+        /* Video de Fondo */
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1; /* Envía el video al fondo */
+            background-size: cover;
+            filter: brightness(0.4) grayscale(0.2); /* Oscurece y da un toque militar */
+        }
+
+        /* Contenido Central (Mensajes) */
+        .loading-content {
+            z-index: 1; /* Asegura que el texto esté sobre el video */
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+            color: #f0f0f0;
+            position: relative; /* Para la línea de acento */
+        }
+
+        .loading-title {
+            font-family: 'Roboto Condensed', sans-serif; 
+            font-size: 5em; /* Tamaño grande para el título principal */
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #7c9a51; /* Verde oliva claro */
+        }
+
+        .loading-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background-color: #556b2f; /* Línea de acento verde oliva */
+            box-shadow: 0 0 10px #556b2f;
+            border-radius: 2px;
+        }
+
+        .loading-message {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.8em;
+            margin-top: 30px;
+            letter-spacing: 2px;
+            color: #d0d0d0;
+            opacity: 0; /* Inicialmente oculto */
+            animation: fadeInOut 2s infinite alternate; /* Animación de parpadeo */
+        }
+
+        /* Animación de parpadeo para el mensaje de carga */
+        @keyframes fadeInOut {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .loading-title {
+                font-size: 3.5em;
+                letter-spacing: 3px;
+            }
+            .loading-message {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="Img-Vid/Inicio.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de videos.
+    </video>
+
+    <div class="loading-content">
+        <h1 class="loading-title">Entrando al Juego</h1>
+        <p class="loading-message">Cargando...</p>
+    </div>
+
+    <script>
+        // Opcional: Podrías añadir lógica para cambiar el mensaje o redirigir después de un tiempo
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ejemplo de redirección después de 5 segundos
+            // setTimeout(() => {
+            //     window.location.href = 'otra_pagina.html'; // Redirigir a otra página o iniciar el juego
+            // }, 5000); 
+        });
+    </script>
+</body>
+</html>
